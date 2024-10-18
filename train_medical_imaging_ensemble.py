@@ -22,7 +22,7 @@ parser = argparse.ArgumentParser()
 # general
 parser.add_argument("--encode_group", default=False, type=bool)
 parser.add_argument("--group", default=0, type=int)
-parser.add_argument("--network", default="efficientnet")
+parser.add_argument("--network", default="resnet50")
 parser.add_argument("--method_seed", default=42, type=int) 
 parser.add_argument("--data_seed", default=42, type=int)
 parser.add_argument("--device", default="cuda:0")
@@ -44,7 +44,7 @@ method_seed, data_seed, device = args.method_seed, args.data_seed, args.device
 print("Computation executed on >", device)
 
 # check network
-assert args.network in ["resnet18", "resnet34", "resnet50", "efficientnet", "convnext", "regnet"]
+assert args.network in ["resnet18", "resnet34", "resnet50", "efficientnet", "regnet"]
 
 if args.encode_group:
     run_path = os.path.join(RESULTS_PATH,
@@ -112,9 +112,6 @@ for n in range(args.num_networks):
     elif args.network == "efficientnet":
         network = tv.models.efficientnet_v2_s(weights=None)
         network.classifier = nn.Linear(in_features=1280, out_features=2)
-    elif args.network == "convnext":
-        network = tv.models.convnext_tiny(weights=None)
-        network.classifier[2] = nn.Linear(in_features=768, out_features=2)
     elif args.network == "regnet":
         network = tv.models.regnet_y_800mf(weights=None)
         network.fc = nn.Linear(in_features=784, out_features=2)

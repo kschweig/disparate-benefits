@@ -1,6 +1,6 @@
 # The Disparate Benefits of Deep Ensembles
 
-[![arXiv](https://img.shields.io/badge/arXiv-xxx.XXXXX-2ca02c.svg)](https://arxiv.org/abs/x)
+[![arXiv](https://img.shields.io/badge/arXiv-2410.13831-2ca02c.svg)](https://arxiv.org/abs/2410.13831)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Kajetan Schweighofer<sup>1</sup>, Adrian Arnaiz-Rodriguez<sup>2</sup>, Sepp Hochreiter<sup>1,3</sup>, Nuria Oliver<sup>2</sup>
@@ -25,10 +25,11 @@ The environment can be installed via
 conda env create -f environment.yml
 conda activate disparate_benefits
 ```
+If you faced issues installing the environment from the file directly or experience broken packages (we had them on some machines for pytorch), installing the packages manually one after another resolved these issues for us.
 
 ## Setting up the Face Detection Experiments
 
-
+Download the files from [https://www.kaggle.com/datasets/abhikjha/utk-face-cropped](https://www.kaggle.com/datasets/abhikjha/utk-face-cropped) as they are no longer accessible on the original website [https://susanqq.github.io/UTKFace/](https://susanqq.github.io/UTKFace/).
 
 ## Setting up Medical Imaging Experiments
 
@@ -38,6 +39,10 @@ An account at https://stanfordaimi.azurewebsites.net is needed to download this 
 Raw data can be checked with [check_chexpert.ipynb](./notebooks/check_chexpert.ipynb) and the preprocessed data and the dataset pipeline can be tested with [test_chexpert.ipynb](./notebooks/test_chexpert.ipynb).
 
 ## Replicating the Results
+
+Run the [train_face_detection_ensemble.py](train_face_detection_ensemble.py) and [train_medical_imaging_ensemble.py](train_medical_imaging_ensemble.py) in all desired configurations. The configurations to replicate are stated in the paper and are basically the standard configs for all combinations of targets, networks and seeds (42, 142, 242, 342 and 442).
+Afterwards, execute the [eval_face_detection_ensemble.ipynb](eval_face_detection_ensemble.ipynb) and [eval_medical_imaging_ensemble.ipynb](eval_medical_imaging_ensemble.ipynb) to calculate the preds.
+Then, all other analysis files analyze_xxx.ipynb can be executed.
 
 ## Contact
 
@@ -49,9 +54,9 @@ If you find this work useful, please cite
 
 ```
 @article{schweighofer2024disparate,
-    title={On Information-Theoretic Measures of Predictive Uncertainty}, 
+    title={The Disparate Benefits of Deep Ensembles}, 
     author={Kajetan Schweighofer and Adrian Arnaiz-Rodriguez and Sepp Hochreiter and Nuria Oliver},
-    journal={arXiv preprint arXiv:xxx},
+    journal={arXiv preprint arXiv:2410.13831},
     year={2024}
 }
 ```
