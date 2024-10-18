@@ -36,8 +36,6 @@ Download the files from [https://www.kaggle.com/datasets/abhikjha/utk-face-cropp
 First, follow the instructions given in [setup_chexpert.py](./setup_chexpert.py) for downloading raw data and run the file to create a downsized version of it for faster experiments and move the necessary csv files containing label and protected attribute information.
 An account at https://stanfordaimi.azurewebsites.net is needed to download this dataset.
 
-Raw data can be checked with [check_chexpert.ipynb](./notebooks/check_chexpert.ipynb) and the preprocessed data and the dataset pipeline can be tested with [test_chexpert.ipynb](./notebooks/test_chexpert.ipynb).
-
 ## Replicating the Results
 
 Run the [train_face_detection_ensemble.py](train_face_detection_ensemble.py) and [train_medical_imaging_ensemble.py](train_medical_imaging_ensemble.py) in all desired configurations. The configurations to replicate are stated in the paper and are basically the standard configs for all combinations of targets, networks and seeds (42, 142, 242, 342 and 442).
