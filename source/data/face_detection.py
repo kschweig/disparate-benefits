@@ -2,6 +2,7 @@ import os
 import gdown
 import shutil
 import pandas as pd
+pd.set_option('future.no_silent_downcasting', True)
 from typing import Any, Callable, Final, Tuple, List
 
 import torch
@@ -114,9 +115,9 @@ def _get_labels_protected_attributes(split:str, binarize:bool):
     df.head(n=30)
     
     # convert strings to integers
-    df['gender'].replace(gender_dict, inplace=True)
-    df['age'].replace(age_dict, inplace=True)
-    df['race'].replace(race_dict_ff, inplace=True)
+    df['gender'] = df['gender'].replace(gender_dict).infer_objects(copy=False)
+    df['age'] = df['age'].replace(age_dict).infer_objects(copy=False)
+    df['race'] = df['race'].replace(race_dict_ff).infer_objects(copy=False)
     df['race (old)'] = df['race']
 
     targets = torch.stack([torch.LongTensor(df[t]) for t in ["age", "gender", "race (old)", "race"]], dim=0)

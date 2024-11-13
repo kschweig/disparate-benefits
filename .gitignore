@@ -167,6 +167,7 @@ cython_debug/
 *-ubyte
 *.pt
 *.pdf
+*.png
 */datasets/*
 */models/*
 */results/*
